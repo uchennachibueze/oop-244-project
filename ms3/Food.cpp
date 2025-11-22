@@ -78,11 +78,9 @@ namespace seneca {
 
         char buffer[256]{};
 
+        if (cin.peek() == '\n') cin.get();
         cin.getline(buffer, 255);
 
-        if (buffer[0] == '\0') {
-            cin.getline(buffer, 255);
-        }
 
         if (buffer[0] == '\0') {
             delete[] m_customize;
