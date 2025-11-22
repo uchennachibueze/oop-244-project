@@ -91,8 +91,9 @@ namespace seneca {
                 padded[i] = nm[i];
         }
 
-        ostr << padded
-            << "   "
+        ostr << padded;
+        ostr << sizeCode();
+        ostr << "   "
             << fixed << setprecision(2)
             << Billable::price();
 
