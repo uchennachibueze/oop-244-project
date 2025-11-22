@@ -136,7 +136,7 @@ namespace seneca {
         const char* portion =
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
 
-        ostr << padded << portion << "  "
+        ostr << padded << portion << "   "
             << fixed << setprecision(2) << price();
 
         if (ostr.rdbuf() == cout.rdbuf() && m_customize) {
