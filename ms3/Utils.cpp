@@ -56,7 +56,7 @@ namespace seneca {
         return cstring && *cstring == 0;
     }
 
-    /*int Utils::getInt() const {
+    int Utils::getInt() const {
         int value{};
         bool valid = false;
 
@@ -78,47 +78,14 @@ namespace seneca {
         }
 
         return value;
-    }*/
-    int Utils::getInt() const {
-        int value{};
-        bool valid = false;
-
-        while (!valid) {
-
-            if (cin >> value) {
-
-                cin.ignore(10000, '\n');
-                valid = true;
-            }
-            else {
-                cout << "Invalid integer: ";
-                cin.clear();
-                cin.ignore(10000, '\n');
-            }
-        }
-
-        return value;
     }
 
 
-   /* int Utils::getInt(int min, int max) const {
+   int Utils::getInt(int min, int max) const {
         int value = getInt();
 
         while (value < min || value > max) {
             std::cout << "Invalid value: ["
-                << min << " <= value <= " << max
-                << "], try again: ";
-            value = getInt();
-        }
-
-        return value;
-    }*/
-
-    int Utils::getInt(int min, int max) const {
-        int value = getInt();
-
-        while (value < min || value > max) {
-            cout << "Invalid value: ["
                 << min << " <= value <= " << max
                 << "], try again: ";
             value = getInt();
