@@ -136,9 +136,14 @@ namespace seneca {
         const char* portion =
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
 
-        ostr << padded << portion
-            << ((!m_ordered || m_customize) ? "  " : "   ")
-            << fixed << setprecision(2) << price();
+        ostr << padded << portion;
+
+        int portionLen = ut.strlen(portion);
+        int totalLen = 28 + portionLen;
+        int spacesNeeded = 36 - totalLen;
+        for (int i = 0; i < spacesNeeded; i++)
+            ostr << ' ';
+        ostr << fixed << setprecision(2) << price();
 
         if (ostr.rdbuf() == cout.rdbuf() && m_customize) {
             ostr << " >> ";
