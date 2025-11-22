@@ -92,8 +92,8 @@ namespace seneca {
         }
 
         ostr << padded
-            //<< "   "
-            << setw(6) << fixed << setprecision(2)
+            << "   "
+            << fixed << setprecision(2)
             << Billable::price();
 
         return ostr;
