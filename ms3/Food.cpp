@@ -139,8 +139,19 @@ namespace seneca {
         ostr << padded << portion;
 
         int portionLen = ut.strlen(portion);
-        int totalLen = 28 + portionLen;
-        int spacesNeeded = 36 - totalLen;
+        int paddedLen = 28;
+        int totalLen = paddedLen + portionLen;
+        int spacesNeeded;
+        if (!m_ordered) {
+            spacesNeeded = 35 - totalLen;
+        }
+        else if (m_customize) {
+            spacesNeeded = 36 - totalLen;
+        }
+        else {
+            spacesNeeded = 37 - totalLen;
+        }
+
         for (int i = 0; i < spacesNeeded; i++)
             ostr << ' ';
         ostr << fixed << setprecision(2) << price();
