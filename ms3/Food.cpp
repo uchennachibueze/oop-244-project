@@ -84,7 +84,6 @@ namespace seneca {
             cin.getline(buffer, 255);
         }
 
-
         if (buffer[0] == '\0') {
             delete[] m_customize;
             m_customize = nullptr;
@@ -103,6 +102,11 @@ namespace seneca {
             char* comma = strchr(line, ',');
             if (comma) {
                 *comma = '\0';
+
+                char* end = line + strlen(line) - 1;
+                while (end >= line && (*end == ' ' || *end == '\r' || *end == '\t'))
+                    *end-- = '\0';
+
                 name(line);
 
                 double priceVal = atof(comma + 1);
@@ -137,7 +141,6 @@ namespace seneca {
             for (size_t i = 0; i < copyLen; i++)
                 padded[i] = operator const char* ()[i];
         }
-
 
         const char* portion =
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
