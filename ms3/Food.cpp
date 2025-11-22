@@ -53,7 +53,7 @@ namespace seneca {
         return m_ordered;
     }
 
-   /* bool Food::order() {
+   bool Food::order() {
         cout << "         Food Size Selection\n"
             << "          1- Adult\n"
             << "          2- Child\n"
@@ -78,49 +78,8 @@ namespace seneca {
 
         char buffer[256]{};
 
-        if (cin.peek() == '\n') cin.get();
         cin.getline(buffer, 255);
 
-
-        if (buffer[0] == '\0') {
-            delete[] m_customize;
-            m_customize = nullptr;
-        }
-        else {
-            ut.alocpy(m_customize, buffer);
-        }
-
-        return true;
-    }*/
-
-    bool Food::order() {
-        cout << "         Food Size Selection\n"
-            << "          1- Adult\n"
-            << "          2- Child\n"
-            << "          0- Back\n"
-            << "         > ";
-
-        int choice = ut.getInt(0, 2);
-
-        if (choice == 0) {
-            m_ordered = false;
-            m_child = false;
-            delete[] m_customize;
-            m_customize = nullptr;
-            return false;
-        }
-
-        m_ordered = true;
-        m_child = (choice == 2);
-
-        cout << "Special instructions\n"
-            << "> ";
-
-        char buffer[256]{};
-
-        cin.ignore(10000, '\n');
-
-        cin.getline(buffer, 255);
 
         if (buffer[0] == '\0') {
             delete[] m_customize;
