@@ -78,9 +78,9 @@ namespace seneca {
     }
 
     ostream& Drink::print(ostream& ostr) const {
-        char padded[29]{};
-        memset(padded, '.', 28);
-        padded[28] = '\0';
+        char padded[34]{};
+        memset(padded, '.', 33);
+        padded[33] = '\0';
 
         const char* nm = operator const char* ();
         if (nm) {
