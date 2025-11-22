@@ -95,7 +95,7 @@ namespace seneca {
         ostr << sizeCode();
         ostr << "   "
             << fixed << setprecision(2)
-            << Billable::price();
+            << price();
 
         return ostr;
     }
