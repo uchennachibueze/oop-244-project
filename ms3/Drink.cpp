@@ -52,7 +52,7 @@ namespace seneca {
             << "          3- Larg\n"
             << "          4- Extra Large\n"
             << "          0- Back\n"
-            << "   > ";
+            << "         > ";
 
         int choice = ut.getInt(0, 4);
 
