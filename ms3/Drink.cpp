@@ -78,37 +78,27 @@ namespace seneca {
     }
 
     ostream& Drink::print(ostream& ostr) const {
-        const int PAD_WIDTH = 28;
-
-        char padded[PAD_WIDTH + 1]{};
-        memset(padded, '.', PAD_WIDTH);
-        padded[PAD_WIDTH] = '\0';
+        char padded[29]{};
+        memset(padded, '.', 28);
+        padded[28] = '\0';
 
         const char* nm = operator const char* ();
         if (nm) {
             size_t len = ut.strlen(nm);
             size_t copyLen = len > 25 ? 25 : len;
+
             for (size_t i = 0; i < copyLen; i++)
                 padded[i] = nm[i];
         }
 
-        if (!ordered()) {
-            ostr << padded
-                << "   "
-                << setw(7) << fixed << setprecision(2)
-                << Billable::price();
-        }
-        else {
-            ostr << padded
-                << "   "
-                << sizeCode()
-                << "   "
-                << setw(7) << fixed << setprecision(2)
-                << price();
-        }
+        ostr << padded
+            << "   "
+            << setw(7) << fixed << setprecision(2)
+            << Billable::price();
 
         return ostr;
     }
+
 
     double Drink::price() const {
         if (!ordered()) return Billable::price();
