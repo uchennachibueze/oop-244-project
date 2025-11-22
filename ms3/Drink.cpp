@@ -85,20 +85,19 @@ namespace seneca {
         const char* nm = operator const char* ();
         if (nm) {
             size_t len = ut.strlen(nm);
-            size_t copyLen = len > 28 ? 28 : len;
+            size_t copyLen = len > 25 ? 25 : len;
 
             for (size_t i = 0; i < copyLen; i++)
                 padded[i] = nm[i];
         }
 
         ostr << padded
-            << "   "
-            << setw(7) << fixed << setprecision(2)
+            //<< "   "
+            << setw(10) << fixed << setprecision(2)
             << Billable::price();
 
         return ostr;
     }
-
 
     double Drink::price() const {
         if (!ordered()) return Billable::price();
