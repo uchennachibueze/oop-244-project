@@ -137,7 +137,7 @@ namespace seneca {
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
 
         ostr << padded << portion
-            << (m_ordered ? "   " : "  ")
+            << ((!m_ordered || m_customize) ? "  " : "   ")
             << fixed << setprecision(2) << price();
 
         if (ostr.rdbuf() == cout.rdbuf() && m_customize) {
