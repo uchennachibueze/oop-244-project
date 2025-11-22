@@ -23,6 +23,7 @@ namespace seneca {
 		return true;
 	}
 
+	// function to set safe empty state
 	void MenuItem::safeEmptyState() {
 		m_content = nullptr;
 		m_indent = 0;
@@ -80,14 +81,3 @@ namespace seneca {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
