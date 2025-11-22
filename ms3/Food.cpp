@@ -142,7 +142,7 @@ namespace seneca {
         ostr << padded << portion;
 
         int currentLen = 28 + ut.strlen(portion);
-        int spacesNeeded = 34 - currentLen;
+        int spacesNeeded = 36 - currentLen;
 
         for (int i = 0; i < spacesNeeded; i++)
             ostr << ' ';
