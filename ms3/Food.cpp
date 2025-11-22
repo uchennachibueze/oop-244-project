@@ -142,13 +142,11 @@ namespace seneca {
         ostr << padded << portion;
 
         int currentLen = 28 + ut.strlen(portion);
-        int spacesNeeded = 31 - currentLen;
+        int spacesNeeded = 34 - currentLen;
 
         for (int i = 0; i < spacesNeeded; i++)
             ostr << ' ';
 
-
-        /*ostr << "  ";*/
         ostr << setw(5) << fixed << setprecision(2) << price();
 
         if (ostr.rdbuf() == cout.rdbuf() && m_customize) {
