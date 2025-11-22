@@ -82,26 +82,31 @@ namespace seneca {
         memset(padded, '.', 28);
         padded[28] = '\0';
 
-        if (operator const char* ()) {
-            size_t len = ut.strlen(operator const char* ());
+        const char* nm = operator const char* ();
+        if (nm) {
+            size_t len = ut.strlen(nm);
             size_t copyLen = len > 25 ? 25 : len;
 
             for (size_t i = 0; i < copyLen; i++)
-                padded[i] = operator const char* ()[i];
+                padded[i] = nm[i];
         }
 
         if (!ordered()) {
-            ostr << padded << "   "
+            ostr << padded
+                << "   "
                 << setw(7) << fixed << setprecision(2) << Billable::price();
         }
         else {
-            ostr << padded << "   "
-                << sizeCode() << "   "
+            ostr << padded
+                << "   "
+                << sizeCode()
+                << "   "
                 << setw(7) << fixed << setprecision(2) << price();
         }
 
         return ostr;
     }
+
 
     double Drink::price() const {
         if (!ordered()) return Billable::price();
