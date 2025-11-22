@@ -54,11 +54,11 @@ namespace seneca {
     }
 
     bool Food::order() {
-        cout << "   Food Size Selection\n"
-            << "      1- Adult\n"
-            << "      2- Child\n"
-            << "      0- Back\n"
-            << "   > ";
+        cout << "         Food Size Selection\n"
+            << "          1- Adult\n"
+            << "          2- Child\n"
+            << "          0- Back\n"
+            << "         > ";
 
         int choice = ut.getInt(0, 2);
 
@@ -73,8 +73,8 @@ namespace seneca {
         m_ordered = true;
         m_child = (choice == 2);
 
-        cout << "   Special instructions\n"
-            << "   > ";
+        cout << "Special instructions\n"
+            << "> ";
 
         char buffer[256]{};
         cin.getline(buffer, 255);
