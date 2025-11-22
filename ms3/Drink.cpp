@@ -90,9 +90,15 @@ namespace seneca {
                 padded[i] = operator const char* ()[i];
         }
 
-        ostr << padded << "   "
-            << sizeCode() << "   "
-            << setw(7) << fixed << setprecision(2) << price();
+        if (!ordered()) {
+            ostr << padded << "   "
+                << setw(7) << fixed << setprecision(2) << Billable::price();
+        }
+        else {
+            ostr << padded << "   "
+                << sizeCode() << "   "
+                << setw(7) << fixed << setprecision(2) << price();
+        }
 
         return ostr;
     }
