@@ -78,14 +78,14 @@ namespace seneca {
     }
 
     ostream& Drink::print(ostream& ostr) const {
-        char padded[29]{};
-        memset(padded, '.', 28);
-        padded[28] = '\0';
+        char padded[34]{};
+        memset(padded, '.', 33);
+        padded[33] = '\0';
 
         const char* nm = operator const char* ();
         if (nm) {
             size_t len = ut.strlen(nm);
-            size_t copyLen = len > 25 ? 25 : len;
+            size_t copyLen = len > 28 ? 28 : len;
 
             for (size_t i = 0; i < copyLen; i++)
                 padded[i] = nm[i];
