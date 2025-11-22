@@ -132,12 +132,12 @@ namespace seneca {
                 padded[i] = operator const char* ()[i];
         }
 
+
         const char* portion =
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
 
-        ostr << padded << "   "
-            << setw(5) << left << portion << "   "
-            << setw(7) << right << fixed << setprecision(2) << price();
+        ostr << padded << portion << "   "
+            << fixed << setprecision(2) << price();
 
         if (ostr.rdbuf() == cout.rdbuf() && m_customize) {
             ostr << " >> ";
