@@ -118,8 +118,7 @@ namespace seneca {
 
         char buffer[256]{};
 
-        if (cin.peek() == '\n')
-            cin.ignore();
+        cin.ignore(10000, '\n');
 
         cin.getline(buffer, 255);
 
