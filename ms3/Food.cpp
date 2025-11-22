@@ -150,7 +150,7 @@ namespace seneca {
             spacesNeeded = 35 - totalLen;
         }
         else if (m_customize) {
-            spacesNeeded = 36 - totalLen;
+            spacesNeeded = 35 - totalLen;
         }
         else {
             spacesNeeded = 37 - totalLen;
