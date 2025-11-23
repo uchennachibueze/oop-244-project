@@ -8,7 +8,7 @@
 //
 // -----------------------------------------------------------
 // Name            Date            Reason
-// Your Name       2025-11-21     Milestone 3 implementation
+// v1.0       2025-11-21     Milestone 3 implementation
 //
 ***********************************************************************/
 #define _CRT_SECURE_NO_WARNINGS

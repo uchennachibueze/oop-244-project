@@ -8,8 +8,9 @@
 //
 // -----------------------------------------------------------
 // Name            Date            Reason
-// Your Name       2025-11-21     Milestone 3 implementation
-//
+// v1.0       2025-11-21     Implemented the constructor and destructor for food and also
+							 implemented the read, price, print, order, and ordered methods
+// v1.1       2025-11-22     Clean up code and citation
 ***********************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
