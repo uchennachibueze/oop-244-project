@@ -2,6 +2,7 @@
 // OOP244 Project - Milestone 3
 // Module: Drink
 // File: Drink.cpp
+// Author: Uchenna Emmanuel Chibueze, StudentNo: 174952234, Email: uechibueze@myseneca.ca
 // Version: 1.0
 // Description:
 //   Drink implementation derived from Billable.

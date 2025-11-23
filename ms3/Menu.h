@@ -1,9 +1,9 @@
 /* Citation and Sources...
-Final Project Milestone 2
+Final Project Milestone 3
 Module: Menu
 Filename: Menu.h
 Version 1.0
-Author: Uchenna Emmanuel Chibueze, StNo: 174952234, Email: uechibueze@myseneca.ca
+Author: Uchenna Emmanuel Chibueze, StudentNo: 174952234, Email: uechibueze@myseneca.ca
 -----------------------------------------------------------
 I have done all the coding by myself
 -----------------------------------------------------------

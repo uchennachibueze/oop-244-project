@@ -2,6 +2,7 @@
 // OOP244 Project - Milestone 3
 // Module: Food
 // File: Food.cpp
+// Author: Uchenna Emmanuel Chibueze, StudentNo: 174952234, Email: uechibueze@myseneca.ca
 // Version: 1.0
 // Description:
 //   Food implementation derived from Billable.

@@ -2,6 +2,7 @@
 // OOP244 Project - Milestone 3
 // Module: Billable
 // File: Billable.cpp
+// Author: Uchenna Emmanuel Chibueze, StudentNo: 174952234, Email: uechibueze@myseneca.ca
 // Version: 1.0
 // Description:
 //   Abstract base class implementation for billable items.
