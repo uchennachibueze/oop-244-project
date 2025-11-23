@@ -97,9 +97,9 @@ namespace seneca {
         char line[256]{};
 
         if (file.getline(line, 255)) {
-            char* comma = strchr(line, ',');
-            if (comma) {
-                *comma = '\0';
+            char* extractComma = strchr(line, ',');
+            if (extractComma) {
+                *extractComma = '\0';
 
                 char* end = line + strlen(line) - 1;
                 while (end >= line && (*end == ' ' || *end == '\r' || *end == '\t'))
@@ -107,8 +107,8 @@ namespace seneca {
 
                 name(line);
 
-                double priceVal = atof(comma + 1);
-                Billable::price(priceVal);
+                double foodPrice = atof(extractComma + 1);
+                Billable::price(foodPrice);
 
                 m_ordered = false;
                 m_child = false;
@@ -128,27 +128,27 @@ namespace seneca {
     }
 
     ostream& Food::print(ostream& ostr) const {
-        char padded[29]{};
-        memset(padded, '.', 28);
-        padded[28] = '\0';
+        char displayDot[29]{};
+        memset(displayDot, '.', 28);
+        displayDot[28] = '\0';
 
         if (operator const char* ()) {
             size_t len = ut.strlen(operator const char* ());
             size_t copyLen = len > 25 ? 25 : len;
 
             for (size_t i = 0; i < copyLen; i++)
-                padded[i] = operator const char* ()[i];
+                displayDot[i] = operator const char* ()[i];
         }
 
-        const char* portion =
+        const char* foodPortion =
             m_ordered ? (m_child ? "Child" : "Adult") : ".....";
 
-        ostr << padded << portion;
+        ostr << displayDot << foodPortion;
 
-        int currentLen = 28 + ut.strlen(portion);
-        int spacesNeeded = 35 - currentLen;
+        int currentDisplayLength = 28 + ut.strlen(foodPortion);
+        int spaces = 35 - currentDisplayLength;
 
-        for (int i = 0; i < spacesNeeded; i++)
+        for (int i = 0; i < spaces; i++)
             ostr << ' ';
 
         ostr << setw(5) << fixed << setprecision(2) << price();

@@ -26,13 +26,13 @@ namespace seneca {
         char line[256]{};
 
         if (file.getline(line, 255)) {
-            char* comma = strchr(line, ',');
-            if (comma) {
-                *comma = '\0';
+            char* extractComma = strchr(line, ',');
+            if (extractComma) {
+                *extractComma = '\0';
                 name(line);
 
-                double priceVal = atof(comma + 1);
-                Billable::price(priceVal);
+                double drinkPrice = atof(extractComma + 1);
+                Billable::price(drinkPrice);
                 m_size = 0;
 
                 return file;
@@ -54,9 +54,9 @@ namespace seneca {
             << "          0- Back\n"
             << "         > ";
 
-        int choice = ut.getInt(0, 4);
+        int drinkChoice = ut.getInt(0, 4);
 
-        switch (choice) {
+        switch (drinkChoice) {
             case 1: m_size = 'S'; break;
             case 2: m_size = 'M'; break;
             case 3: m_size = 'L'; break;
@@ -78,24 +78,23 @@ namespace seneca {
     }
 
     ostream& Drink::print(ostream& ostr) const {
-        char padded[29]{};
-        memset(padded, '.', 28);
-        padded[28] = '\0';
+        char displayDot[29]{};
+        memset(displayDot, '.', 28);
+        displayDot[28] = '\0';
 
-        const char* nm = operator const char* ();
-        if (nm) {
-            size_t len = ut.strlen(nm);
+        const char* drinkName = operator const char* ();
+        if (drinkName) {
+            size_t len = ut.strlen(drinkName);
             size_t copyLen = len > 25 ? 25 : len;
 
             for (size_t i = 0; i < copyLen; i++)
-                padded[i] = nm[i];
+                displayDot[i] = drinkName[i];
         }
 
-        ostr << padded;
+        ostr << displayDot;
         ostr << sizeCode();
-        ostr << "   "
-            << fixed << setprecision(2)
-            << price();
+        ostr << "   ";
+        ostr << fixed << setprecision(2) << price();
 
         return ostr;
     }

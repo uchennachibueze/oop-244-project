@@ -25,7 +25,7 @@ namespace seneca {
 
     protected:
         void price(double value);
-        void name(const char* value);
+        void name(const char* name);
 
     public:
         Billable();
