@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "Ordering.h"
+
 using namespace std;
 
 namespace seneca {
@@ -39,8 +40,6 @@ namespace seneca {
 
 		size_t numOfDrinkRec = countRecords(drinkFileName);
 		size_t numOfFoodRec = countRecords(FoodFileName);
-		//cout << "Number of drink records: " << numOfDrinkRec << endl;
-		//cout << "Number of food records: " << numOfFoodRec << endl;
 		ifstream drinkFile(drinkFileName);
 		ifstream foodFile(FoodFileName);
 
@@ -136,12 +135,61 @@ namespace seneca {
 	}
 	void Ordering::orderFood()
 	{
+		Menu foodMenu("Food Menu");
+
+		foodMenu << "Back to Order";
+
+		for(size_t i = 0; i < m_foodCounter; i++) {
+			foodMenu << m_food_items[i];
+		}
+
+		if (foodMenu.select() != 0) {
+			Billable* selectedFoodItem = new Food(m_food_items[foodMenu.select() - 1]);
+			
+			if (selectedFoodItem->order()) {
+				m_bill_items[m_billableCounter] = selectedFoodItem;
+				m_billableCounter++;
+			} else {
+				delete selectedFoodItem[--m_billableCounter];
+			}
+		}
+
+		cout << foodMenu;
+
 	}
 	void Ordering::orderDrink()
 	{
+		Menu drinkMenu("Drink Menu");
+
+		drinkMenu << "Back to Order";
+
+		for (size_t i = 0; i < m_drinkCounter; i++) {
+			drinkMenu << m_drink_items[i];
+		}
+
+		if (drinkMenu.select() != 0) {
+			Billable* selectedDrinkItem = new Drink(m_drink_items[drinkMenu.select() - 1]);
+
+			if (selectedDrinkItem->order()) {
+				m_bill_items[m_billableCounter] = selectedDrinkItem;
+				m_billableCounter++;
+			}
+			else {
+				delete selectedDrinkItem[--m_billableCounter];
+			}
+		}
+
+		cout << drinkMenu;
+
 	}
 	void Ordering::printBill(std::ostream& ostr) const
 	{
+		double total = 0.0;
+		printBillTitle(ostr);
+		for (size_t i = 0; i < m_billableCounter; i++) {
+			cout << *(m_bill_items[i]) << endl;
+		}
+
 	}
 	void Ordering::resetBill()
 	{

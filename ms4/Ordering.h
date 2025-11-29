@@ -17,6 +17,7 @@
 #include <fstream>
 #include "Food.h"
 #include "Drink.h"
+#include "Menu.h"
 #include "Billable.h"
 #include "constants.h"
 namespace seneca {
