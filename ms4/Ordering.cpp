@@ -165,15 +165,16 @@ namespace seneca {
 			drinkMenu << m_drink_items[i];
 		}
 
-		if (drinkMenu.select() != 0) {
-			Billable* selectedDrinkItem = new Drink(m_drink_items[drinkMenu.select() - 1]);
+		int selection = drinkMenu.select();
+		if (selection != 0) {
+			Billable* selectedDrinkItem = new Drink(m_drink_items[selection - 1]);
 
 			if (selectedDrinkItem->order()) {
 				m_bill_items[m_billableCounter] = selectedDrinkItem;
 				m_billableCounter++;
 			}
 			else {
-				delete selectedDrinkItem[--m_billableCounter];
+				delete selectedDrinkItem;
 			}
 		}
 
