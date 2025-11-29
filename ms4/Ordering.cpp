@@ -16,10 +16,10 @@ namespace seneca {
 	}
 	void Ordering::printTotal(std::ostream& ostr, double total) const
 	{
-		ostr << "Total: " << fixed << setprecision(2) << total << endl;
-		ostr << "Tax: " << fixed << setprecision(2) << Tax << endl;
-		ostr << "Total+Tax: " << fixed << setprecision(2) << total + Tax << endl;
-		ostr << "===============================" << endl;
+		ostr << setw(27) << "Total:" << setw(13) << fixed << setprecision(2) << total << endl;
+		ostr << setw(25) << "Tax:" << setw(15) << fixed << setprecision(2) << Tax << endl;
+		ostr << setw(31) << "Total+Tax:" << setw(9) << fixed << setprecision(2) << total + Tax << endl;
+		ostr << "========================================" << endl;
 	}
 	size_t Ordering::countRecords(const char* file) const
 	{
