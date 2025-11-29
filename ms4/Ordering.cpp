@@ -10,7 +10,9 @@ using namespace std;
 namespace seneca {
 	void Ordering::printBillTitle(std::ostream& ostr) const
 	{
-		ostr << "Bill # " << m_bill_sn << " ==========================" << endl;
+		ostr << "Bill # " 
+			<< setw(3) << std::setfill('0') << m_bill_sn
+			<< " =============================" << setfill(' ') << endl;
 	}
 	void Ordering::printTotal(std::ostream& ostr, double total) const
 	{
