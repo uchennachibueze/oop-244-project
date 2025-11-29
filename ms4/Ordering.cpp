@@ -32,12 +32,13 @@ namespace seneca {
 		return newlineCounter;
 	}
 	Ordering::Ordering(const char* drinkFileName, const char* FoodFileName) 
-	:	m_bill_sn{ 1 }, 
-		m_billableCounter{ 0 },
-		m_drink_items{ nullptr },
-		m_food_items{ nullptr },
+	:	m_foodCounter{ 0 },
 		m_drinkCounter{ 0 },
-		m_foodCounter{ 0 }
+		m_billableCounter{ 0 },
+		m_bill_sn{ 1 }, 
+		m_food_items{ nullptr },
+		m_drink_items{ nullptr },
+		m_bill_items{nullptr}
 	{
 
 		size_t numOfDrinkRec = countRecords(drinkFileName);
