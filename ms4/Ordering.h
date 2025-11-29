@@ -13,13 +13,11 @@
 ***********************************************************************/
 #ifndef SENECA_ORDERING_H
 #define SENECA_ORDERING_H
-#include <iostream>
-#include <fstream>
 #include "Food.h"
 #include "Drink.h"
-#include "Menu.h"
 #include "Billable.h"
 #include "constants.h"
+
 namespace seneca {
 	class Ordering {
 	private:

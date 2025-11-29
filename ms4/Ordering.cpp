@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include "Ordering.h"
+#include "Menu.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -13,7 +15,7 @@ namespace seneca {
 	void Ordering::printTotal(std::ostream& ostr, double total) const
 	{
 		ostr << "Total: " << fixed << setprecision(2) << total << endl;
-		ostr << "Tax: " << fixed << setprecision(2) << total * Tax << endl;
+		ostr << "Tax: " << fixed << setprecision(2) << Tax << endl;
 		ostr << "Total+Tax: " << fixed << setprecision(2) << total + Tax << endl;
 		ostr << "===============================" << endl;
 	}
@@ -128,40 +130,35 @@ namespace seneca {
 		cout << "List of Available Drinks " << endl;
 		cout << "========================" << endl;
 		for (size_t i = 0; i < m_drinkCounter; i++) {
-			m_food_items[i].print();
+			m_drink_items[i].print();
 			cout << endl;
 		}
 		cout << "========================" << endl;
 	}
 	void Ordering::orderFood()
 	{
-		Menu foodMenu("Food Menu");
-
-		foodMenu << "Back to Order";
+		Menu foodMenu("Food Menu", "Back to Order", 2);
 
 		for(size_t i = 0; i < m_foodCounter; i++) {
 			foodMenu << m_food_items[i];
 		}
 
-		if (foodMenu.select() != 0) {
-			Billable* selectedFoodItem = new Food(m_food_items[foodMenu.select() - 1]);
+		int selection = foodMenu.select();
+		if (selection != 0) {
+			Billable* selectedFoodItem = new Food(m_food_items[selection - 1]);
 			
 			if (selectedFoodItem->order()) {
 				m_bill_items[m_billableCounter] = selectedFoodItem;
 				m_billableCounter++;
 			} else {
-				delete selectedFoodItem[--m_billableCounter];
+				delete selectedFoodItem;
 			}
 		}
-
-		cout << foodMenu;
 
 	}
 	void Ordering::orderDrink()
 	{
-		Menu drinkMenu("Drink Menu");
-
-		drinkMenu << "Back to Order";
+		Menu drinkMenu("Drink Menu", "Back to Order", 2);
 
 		for (size_t i = 0; i < m_drinkCounter; i++) {
 			drinkMenu << m_drink_items[i];
@@ -179,19 +176,39 @@ namespace seneca {
 			}
 		}
 
-		cout << drinkMenu;
-
 	}
 	void Ordering::printBill(std::ostream& ostr) const
 	{
 		double total = 0.0;
 		printBillTitle(ostr);
 		for (size_t i = 0; i < m_billableCounter; i++) {
-			cout << *(m_bill_items[i]) << endl;
+			if(m_bill_items[i]) {
+				m_bill_items[i]->print(ostr) << endl;
+				total += m_bill_items[i]->price();
+			}
 		}
+		printTotal(ostr, total);
 
 	}
 	void Ordering::resetBill()
 	{
+		char billFileName[20]{};
+		ut.makeBillFileName(billFileName, m_bill_sn);
+
+		ofstream billFile(billFileName);
+		if (billFile) {
+			printBill(billFile);
+		}
+
+		cout << "Saved bill number " << m_bill_sn << std::endl;
+		cout << "Starting bill number " << (m_bill_sn + 1) << std::endl;
+
+		for (size_t i = 0; i < m_billableCounter; i++) {
+			delete m_bill_items[i];
+			m_bill_items[i] = nullptr;
+		}
+
+		m_bill_sn++;
+		m_billableCounter = 0;
 	}
 }
