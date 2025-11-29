@@ -1,3 +1,20 @@
+/***********************************************************************
+// OOP244 Project - Milestone 4
+// Module: Ordering
+// File: Ordering.cpp
+// Version: 1.0
+// Description:
+//   Method definition for ordering items.
+//
+// -----------------------------------------------------------
+// Name            Date            Reason
+// v1.0				11/28/2025     Define and implement the functions 
+//								  following the specifications in the MS4
+//
+-----------------------------------------------------------
+I have done all the code by myself
+-----------------------------------------------------------
+***********************************************************************/
 #include <iomanip>
 #include <iostream>
 #include <fstream>
@@ -8,12 +25,14 @@
 using namespace std;
 
 namespace seneca {
+	// Prints the header title of the bill
 	void Ordering::printBillTitle(std::ostream& ostr) const
 	{
 		ostr << "Bill # " 
 			<< setw(3) << std::setfill('0') << m_bill_sn
 			<< " =============================" << setfill(' ') << endl;
 	}
+	//Prints the total of the bill
 	void Ordering::printTotal(std::ostream& ostr, double total) const
 	{
 		ostr << setw(27) << "Total:" << setw(13) << fixed << setprecision(2) << total << endl;
@@ -21,6 +40,7 @@ namespace seneca {
 		ostr << setw(31) << "Total+Tax:" << setw(9) << fixed << setprecision(2) << total + (total * Tax) << endl;
 		ostr << "========================================" << endl;
 	}
+	// Count records in the file
 	size_t Ordering::countRecords(const char* file) const
 	{
 		size_t newlineCounter = 0;
@@ -33,6 +53,7 @@ namespace seneca {
 		}
 		return newlineCounter;
 	}
+	// Constructor
 	Ordering::Ordering(const char* drinkFileName, const char* FoodFileName) 
 	:	m_foodCounter{ 0 },
 		m_drinkCounter{ 0 },
@@ -96,6 +117,7 @@ namespace seneca {
 		m_drinkCounter = numOfDrinkRec;
 		m_foodCounter = numOfFoodRec;
 	}
+	// Destructor
 	Ordering::~Ordering() {
 		delete[] m_drink_items;
 		delete[] m_food_items;
@@ -104,7 +126,7 @@ namespace seneca {
 			delete m_bill_items[i];
 		}
 	}
-
+	// Gets the number of bill items
 	size_t Ordering::noOfBillItems() const
 	{
 		return m_billableCounter;
@@ -118,6 +140,7 @@ namespace seneca {
 	{
 		return m_billableCounter > 0;
 	}
+	
 	void Ordering::listFoods() const
 	{
 		cout << "List Of Avaiable Meals" << endl;
@@ -140,6 +163,9 @@ namespace seneca {
 	}
 	void Ordering::orderFood()
 	{
+		if (m_billableCounter >= MaximumNumberOfBillItems) {
+			return;
+		}
 		Menu foodMenu("Food Menu", "Back to Order", 2);
 
 		for(size_t i = 0; i < m_foodCounter; i++) {
@@ -161,6 +187,9 @@ namespace seneca {
 	}
 	void Ordering::orderDrink()
 	{
+		if (m_billableCounter >= MaximumNumberOfBillItems) {
+			return;
+		}
 		Menu drinkMenu("Drink Menu", "Back to Order", 2);
 
 		for (size_t i = 0; i < m_drinkCounter; i++) {
@@ -196,7 +225,7 @@ namespace seneca {
 	}
 	void Ordering::resetBill()
 	{
-		char billFileName[20]{};
+		char billFileName[21]{};
 		ut.makeBillFileName(billFileName, m_bill_sn);
 
 		ofstream billFile(billFileName);

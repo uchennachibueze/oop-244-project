@@ -4,12 +4,16 @@
 // File: Ordering.h
 // Version: 1.0
 // Description:
-//   Class for ordering items.
+//   Header for ordering items.
 //
 // -----------------------------------------------------------
 // Name            Date            Reason
-// Your Name       2025-11-21     Milestone 4 implementation
+// v1.0				11/28/2025     Declare the header file, attributes and methods 
+//								  following the specifications in the MS4
 //
+-----------------------------------------------------------
+I have done all the code by myself
+-----------------------------------------------------------
 ***********************************************************************/
 #ifndef SENECA_ORDERING_H
 #define SENECA_ORDERING_H
