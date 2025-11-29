@@ -119,22 +119,22 @@ namespace seneca {
 	void Ordering::listFoods() const
 	{
 		cout << "List Of Avaiable Meals" << endl;
-		cout << "========================" << endl;
+		cout << "========================================" << endl;
 		for (size_t i = 0; i < m_foodCounter; i++) {
 			m_food_items[i].print();
 			cout << endl;
 		}
-		cout << "========================" << endl;
+		cout << "========================================" << endl;
 	}
 	void Ordering::listDrinks() const
 	{
 		cout << "List Of Avaiable Drinks" << endl;
-		cout << "========================" << endl;
+		cout << "========================================" << endl;
 		for (size_t i = 0; i < m_drinkCounter; i++) {
 			m_drink_items[i].print();
 			cout << endl;
 		}
-		cout << "========================" << endl;
+		cout << "========================================" << endl;
 	}
 	void Ordering::orderFood()
 	{
