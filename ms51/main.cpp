@@ -44,7 +44,7 @@ int main() {
         << "Drink";
 
     Menu confirmExit(
-        "You have bills that are not saved. Are you sure you want to exit?",
+        "You have bills that are not saved, are you sue you want to exit?",
         "No"
     );
     confirmExit << "Yes";
