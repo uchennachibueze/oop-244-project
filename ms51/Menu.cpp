@@ -105,7 +105,7 @@ namespace seneca {
 
 	size_t Menu::select() const {
 		if (m_title) {
-			m_title.display() << '\n';
+			m_title.display() << endl;
 		}
 
 		for (unsigned i = 0; i < m_numItems; i++) {
