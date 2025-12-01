@@ -58,14 +58,19 @@ int main() {
 
         switch (selection) {
 
-        case 1: { 
-            int subMenuSelection = orderMenu.select();
+        case 1: {
+            bool orderCase = true;
+            while (orderCase) {
+                int subMenuSelection = orderMenu.select();
 
-            if (subMenuSelection == 1) {
-                order.orderFood();
-            }
-            else if (subMenuSelection == 2) {
-                order.orderDrink();
+                if (subMenuSelection == 1) {
+                    order.orderFood();
+                }
+                else if (subMenuSelection == 2) {
+                    order.orderDrink();
+                } else if (subMenuSelection == 0) {
+                    orderCase = false;
+                }
             }
             break;
         }
