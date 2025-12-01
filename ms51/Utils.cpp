@@ -89,7 +89,7 @@ namespace seneca {
 
         while (value < min || value > max) {
             cout << "Invalid value: ["
-                << min << " <= value <= " << max
+                << min << "<= value <=" << max
                 << "], try again: ";
             value = getInt();
         }
