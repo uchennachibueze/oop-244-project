@@ -39,7 +39,7 @@ int main() {
         << "List Foods"
         << "List Drinks";
 
-    Menu orderMenu("Order Menu", "Back to main menu");
+    Menu orderMenu("Order Menu", "Back to main menu", 1, 3);
     orderMenu << "Food"
         << "Drink";
 
