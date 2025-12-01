@@ -43,28 +43,28 @@ int main() {
     orderMenu << "Food"
         << "Drink";
 
-    Menu exitConfirm(
+    Menu confirmExit(
         "You have bills that are not saved. Are you sure you want to exit?",
         "No"
     );
-    exitConfirm << "Yes";
+    confirmExit << "Yes";
 
 
-    bool running = true;
+    bool isRun = true;
 
-    while (running) {
+    while (isRun) {
 
-        int choice = mainMenu.select();
+        int selection = mainMenu.select();
 
-        switch (choice) {
+        switch (selection) {
 
         case 1: { 
-            int sub = orderMenu.select();
+            int subMenuSelection = orderMenu.select();
 
-            if (sub == 1) {
+            if (subMenuSelection == 1) {
                 order.orderFood();
             }
-            else if (sub == 2) {
+            else if (subMenuSelection == 2) {
                 order.orderDrink();
             }
             break;
@@ -88,13 +88,13 @@ int main() {
 
         case 0:  
             if (order.hasUnsavedBill()) {
-                int answer = exitConfirm.select();
-                if (answer == 1) {   
-                    running = false;
+                int response = confirmExit.select();
+                if (response == 1) {
+                    isRun = false;
                 }
             }
             else {
-                running = false;
+                isRun = false;
             }
             break;
         }
